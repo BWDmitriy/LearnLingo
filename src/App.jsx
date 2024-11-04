@@ -1,12 +1,12 @@
 import './App.css';
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 
 function App() {
   return (
     <div>
       <Header />
-      <h1>Welcome to My App</h1>
-      <p>This is a clean slate for your project.</p>
+      <Home />
     </div>
   );
 }
