@@ -15,6 +15,24 @@ function Home() {
       <div className={styles.imageDiv}>
         {/* Add your image or content here */}
       </div>
+      <footer className={styles.footer}>
+        <div>
+          <h3>32,000 +</h3>
+          <p>Experienced tutors</p>
+        </div>
+        <div>
+          <h3>300,000 +</h3>
+          <p>5-star tutor reviews</p>
+        </div>
+        <div>
+          <h3>120 +</h3>
+          <p>Subjects taught</p>
+        </div>
+        <div>
+          <h3>200 +</h3>
+          <p>Tutor nationalities</p>
+        </div>
+      </footer>
     </main>
   );
 }
