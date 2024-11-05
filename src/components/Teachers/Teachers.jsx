@@ -1,4 +1,6 @@
 import styles from './Teachers.module.css';
+import TeacherCard from '../TeacherCard/TeacherCard';
+import teachersData from '../../assets/teachers.json';
 
 function Teachers() {
   return (
@@ -36,9 +38,10 @@ function Teachers() {
           </select>
         </div>
       </div>
-      {/* Placeholder for TeacherCard components */}
       <div className={styles.teacherList}>
-        {/* TeacherCard components will go here */}
+        {teachersData.map((teacher, index) => (
+          <TeacherCard key={index} teacher={teacher} />
+        ))}
       </div>
     </div>
   );
