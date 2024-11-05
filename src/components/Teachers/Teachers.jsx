@@ -1,8 +1,35 @@
+import { useEffect, useState } from 'react';
 import styles from './Teachers.module.css';
 import TeacherCard from '../TeacherCard/TeacherCard';
-import teachersData from '../../assets/teachers.json';
+import { db } from '../../firebaseConfig.js';
+import { ref, onValue } from 'firebase/database';
 
 function Teachers() {
+  const [teachers, setTeachers] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const teachersRef = ref(db, 'teachers');
+    const unsubscribe = onValue(teachersRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const teachersList = Object.values(data);
+        setTeachers(teachersList);
+      } else {
+        setTeachers([]);
+      }
+    }, (error) => {
+      console.error('Error fetching teachers:', error);
+      setError(error);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (error) {
+    return <div>Error loading teachers: {error.message}</div>;
+  }
+
   return (
     <div className={styles.teachersPage}>
       <div className={styles.filterDiv}>
@@ -39,7 +66,7 @@ function Teachers() {
         </div>
       </div>
       <div className={styles.teacherList}>
-        {teachersData.map((teacher, index) => (
+        {teachers.map((teacher, index) => (
           <TeacherCard key={index} teacher={teacher} />
         ))}
       </div>
