@@ -1,11 +1,25 @@
 // src/TeacherCard.jsx
-import React from "react";
+import { useState } from "react";
 import styles from "./TeacherCard.module.css";
+import BookingForm from "../BookingForm/BookingForm";
+import sprite from "../../assets/icons.svg";
 
 function TeacherCard({ teacher }) {
-  if (!teacher) {
-    return null; // Return null if no teacher data is provided
-  }
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const openBookingModal = () => setIsBookingModalOpen(true);
+  const closeBookingModal = () => setIsBookingModalOpen(false);
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+    // Optionally, handle favorite logic here (e.g., save to localStorage or Firebase)
+  };
 
   return (
     <div className={styles.teacherDiv}>
@@ -24,13 +38,28 @@ function TeacherCard({ teacher }) {
             </h2>
           </div>
           <div className={styles.teacherStats}>
-            <p>Lessons online</p>
+            <p>
+              <svg width="16" height="16">
+                <use xlinkHref={`${sprite}#icon-book`} />
+              </svg>
+              Lessons online
+            </p>
             <div className={styles.divider}></div>
             <p>Lessons done: {teacher.lessons_done}</p>
             <div className={styles.divider}></div>
-            <p>Rating: {teacher.rating}</p>
+            <p>
+              <svg width="16" height="16">
+                <use xlinkHref={`${sprite}#icon-star`} />
+              </svg>
+              Rating: {teacher.rating}
+            </p>
             <div className={styles.divider}></div>
             <p>Price / 1 hour: {teacher.price_per_hour}$</p>
+            <button onClick={toggleFavorite} className={styles.favoriteButton}>
+              <svg width="16" height="16" fill={isFavorite ? "red" : "grey"}>
+                <use xlinkHref={`${sprite}#icon-heart`} />
+              </svg>
+            </button>
           </div>
         </div>
         <div>
@@ -39,13 +68,65 @@ function TeacherCard({ teacher }) {
           <p>Conditions: {teacher.conditions.join(", ")}</p>
         </div>
         <div>
-          <button>♥</button>
-          <a href="#">Read more</a>
+          <button onClick={toggleExpand}>Read more</button>
         </div>
-        <div>
-          <p>Levels: {teacher.levels.join(", ")}</p>
-        </div>
+        {isExpanded && (
+          <div>
+            <p
+              style={{
+                fontFamily: "var(--font-family)",
+                fontWeight: 400,
+                fontSize: "16px",
+                lineHeight: "150%",
+                color: "#121417",
+              }}
+            >
+              {teacher.experience}
+            </p>
+            <div className={styles.reviewsDiv}>
+              {teacher.reviews.map((review, index) => (
+                <div key={index} className={styles.reviewer}>
+                  <div className={styles.reviewProfile}>
+                    <img src="placeholder" alt="Profile" />
+                    <div>
+                      <p
+                        style={{
+                          fontFamily: "var(--font-family)",
+                          fontWeight: 500,
+                          fontSize: "16px",
+                          lineHeight: "150%",
+                          color: "#8a8a89",
+                        }}
+                      >
+                        {review.name}
+                      </p>
+                      <p>
+                        <svg width="16" height="16">
+                          <use xlinkHref={`${sprite}#icon-star`} />
+                        </svg>
+                        {review.rating}
+                      </p>
+                    </div>
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-family)",
+                      fontWeight: 500,
+                      fontSize: "16px",
+                      lineHeight: "150%",
+                      color: "#121417",
+                    }}
+                  >
+                    {review.comment}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <button onClick={openBookingModal}>Book trial lesson</button>
+          </div>
+        )}
       </div>
+      {isBookingModalOpen && <BookingForm onClose={closeBookingModal} />}
     </div>
   );
 }
