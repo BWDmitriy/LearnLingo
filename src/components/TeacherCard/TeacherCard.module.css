@@ -7,6 +7,7 @@
   height: 328px;
   background-color: #fff;
   color: #121417;
+  margin-bottom: 32px;
 }
 
 .teacherPic {
@@ -28,6 +29,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: start;
 }
 
 .teacherStatsDiv {
@@ -65,4 +67,17 @@
   height: 20px;
   background-color: #ccc;
   margin: 0 8px;
+}
+
+.readMore {
+  font-family: var(--font-family);
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+text-decoration: underline;
+text-decoration-skip-ink: none;
+color: #121417;
+}
+.teacherCardSpan {
+  color: #8a8a89;
 }

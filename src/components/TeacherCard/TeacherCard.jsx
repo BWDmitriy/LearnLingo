@@ -63,12 +63,23 @@ function TeacherCard({ teacher }) {
           </div>
         </div>
         <div>
-          <p>Speaks: {teacher.languages.join(", ")}</p>
-          <p>Lesson Info: {teacher.lesson_info}</p>
-          <p>Conditions: {teacher.conditions.join(", ")}</p>
+          <p>
+            <span className={styles.teacherCardSpan}>Speaks:</span>{" "}
+            {teacher.languages.join(", ")}
+          </p>
+          <p>
+            <span className={styles.teacherCardSpan}>Lesson Info:</span>{" "}
+            {teacher.lesson_info}
+          </p>
+          <p>
+            <span className={styles.teacherCardSpan}>Conditions:</span>{" "}
+            {teacher.conditions.join(", ")}
+          </p>
         </div>
         <div>
-          <button onClick={toggleExpand}>Read more</button>
+          <a className={styles.readMore} onClick={toggleExpand}>
+            Read more
+          </a>
         </div>
         {isExpanded && (
           <div>
