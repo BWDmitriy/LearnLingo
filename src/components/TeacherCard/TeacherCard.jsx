@@ -1,7 +1,7 @@
 // src/TeacherCard.jsx
 import { useState } from "react";
 import styles from "./TeacherCard.module.css";
-import BookingForm from "../BookingForm/BookingForm";
+import BookTrialLesson from "../BookTrialLesson/BookTrialLesson";
 import sprite from "../../assets/icons.svg";
 
 function TeacherCard({ teacher }) {
@@ -137,7 +137,14 @@ function TeacherCard({ teacher }) {
           </div>
         )}
       </div>
-      {isBookingModalOpen && <BookingForm onClose={closeBookingModal} />}
+      {isBookingModalOpen && (
+        <div className={styles.modalBackdrop} onClick={closeBookingModal}>
+          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <BookTrialLesson teacher={teacher} />
+            <button className={styles.closeButton} onClick={closeBookingModal}>&times;</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
