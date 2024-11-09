@@ -1,0 +1,86 @@
+/* src/LogIn.module.css */
+.container {
+  position: relative;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+h1 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+p {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: rgba(18, 20, 23, 0.8);
+}
+
+.inputDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputDiv input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 438px;
+  height: 54px;
+}
+
+.inputDiv input::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: #121417;
+}
+
+.passwordInput {
+  position: relative;
+}
+
+.passwordInput .icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+button {
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  max-width: 438px;
+  height: 60px;
+  text-align: center;
+  background: #f4c550;
+  border: none;
+  cursor: pointer;
+}
