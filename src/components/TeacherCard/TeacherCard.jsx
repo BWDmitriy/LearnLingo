@@ -55,11 +55,11 @@ function TeacherCard({ teacher }) {
             </p>
             <div className={styles.divider}></div>
             <p>Price / 1 hour: {teacher.price_per_hour}$</p>
-            <button onClick={toggleFavorite} className={styles.favoriteButton}>
-              <svg width="16" height="16" fill={isFavorite ? "red" : "grey"}>
-                <use xlinkHref={`${sprite}#icon-heart`} />
+            <a onClick={toggleFavorite} className={styles.favoriteButton}>
+              <svg width="16" height="16" >
+                <use xlinkHref={isFavorite ? `${sprite}#icon-fav-selected` : `${sprite}#icon-fav`} />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
         <div>

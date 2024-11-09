@@ -1,5 +1,4 @@
 // src/BookTrialLesson.jsx
-import React from 'react';
 import styles from './BookTrialLesson.module.css';
 
 function BookTrialLesson({ teacher }) {
@@ -20,19 +19,34 @@ function BookTrialLesson({ teacher }) {
         </div>
       </div>
       <h2>What is your main reason for learning English?</h2>
-      <select>
-        <option>Career and business</option>
-        <option>Lesson for kids</option>
-        <option>Living abroad</option>
-        <option>Exams and coursework</option>
-        <option>Culture, travel or hobby</option>
-      </select>
+      <div className={styles.radioGroup}>
+        <label>
+          <input type="radio" name="learningReason" value="Career and business" />
+          Career and business
+        </label>
+        <label>
+          <input type="radio" name="learningReason" value="Lesson for kids" />
+          Lesson for kids
+        </label>
+        <label>
+          <input type="radio" name="learningReason" value="Living abroad" />
+          Living abroad
+        </label>
+        <label>
+          <input type="radio" name="learningReason" value="Exams and coursework" />
+          Exams and coursework
+        </label>
+        <label>
+          <input type="radio" name="learningReason" value="Culture, travel or hobby" />
+          Culture, travel or hobby
+        </label>
+      </div>
       <div className={styles.trialInputs}>
         <input type="text" placeholder="Full Name" />
         <input type="email" placeholder="Email" />
         <input type="tel" placeholder="Phone number" />
       </div>
-      <button className="bookButton">Book</button>
+      <button className={styles.bookButton}>Book</button>
     </div>
   );
 }

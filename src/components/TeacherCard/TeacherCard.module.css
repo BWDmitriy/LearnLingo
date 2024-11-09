@@ -98,9 +98,10 @@ color: #121417;
 
 .modalContent {
   background-color: white;
-  padding: 20px;
+  padding: 20px 64px;
   border-radius: 8px;
   position: relative;
+  text-align: start;
 }
 
 .closeButton {
@@ -111,5 +112,7 @@ color: #121417;
   border: none;
   font-size: 24px;
   cursor: pointer;
+  width: 32px;
+  height: 32px;
 }
 
