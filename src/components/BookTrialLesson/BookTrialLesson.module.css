@@ -112,6 +112,9 @@ height: 20px;
   line-height: 156%;
   color: #121417;
 }
+.bookButton:hover {
+  background-color: #ffdc86;
+}
 .container > div {
   margin-bottom: 40px;
 }

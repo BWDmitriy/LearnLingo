@@ -1,0 +1,5 @@
+   <!-- public/favicon.svg -->
+   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
+     <path fill="#ffda44" style="fill: var(--color1, #ffda44); stroke: var(--color2, #000)" stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.1429" d="M31.429 16c0 8.521-6.908 15.429-15.429 15.429s-15.429-6.908-15.429-15.429c0-8.521 6.908-15.429 15.429-15.429s15.429 6.908 15.429 15.429z"></path>
+     <path fill="#338af3" style="fill: var(--color3, #338af3)" d="M0 16c0-8.836 7.163-16 16-16s16 7.163 16 16z"></path>
+   </svg>

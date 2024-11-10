@@ -48,4 +48,8 @@ padding: 16px 48px;
 width: 183px;
 height: 60px;
 background-color: #f4c550;
+margin-left: 25%;
+}
+.loadMore:hover {
+  background-color: #ffdc86;
 }

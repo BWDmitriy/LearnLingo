@@ -60,7 +60,9 @@
   cursor: pointer;
   margin-top: 1rem;
 }
-
+.descriptionDiv button:hover {
+  background-color: #ffdc86;
+}
 .imageDiv {
   border-radius: 30px;
     width: 568px;
