@@ -5,6 +5,7 @@ import BookTrialLesson from "../BookTrialLesson/BookTrialLesson";
 import sprite from "../../assets/icons.svg";
 import { auth } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+import PropTypes from "prop-types";
 
 function TeacherCard({ teacher }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -200,5 +201,9 @@ function TeacherCard({ teacher }) {
     </div>
   );
 }
+
+TeacherCard.propTypes = {
+  teacher: PropTypes.func.isRequired,
+};
 
 export default TeacherCard;

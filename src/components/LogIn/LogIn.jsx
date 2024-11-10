@@ -7,6 +7,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import styles from "./LogIn.module.css";
 import sprite from "../../assets/icons.svg";
+import PropTypes from "prop-types";
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -79,5 +80,8 @@ function LogIn({ onClose }) {
     </div>
   );
 }
+LogIn.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default LogIn;

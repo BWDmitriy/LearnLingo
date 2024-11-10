@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
 import styles from "./Registration.module.css";
 import sprite from "../../assets/icons.svg";
+import PropTypes from "prop-types";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -81,5 +82,9 @@ function Registration({ onClose }) {
     </div>
   );
 }
+
+Registration.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Registration;
