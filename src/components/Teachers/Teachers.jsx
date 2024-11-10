@@ -11,6 +11,11 @@ function Teachers() {
   const [visibleTeachers, setVisibleTeachers] = useState(4);
   const [error, setError] = useState(null);
 
+  // State for filters
+  const [selectedLanguage, setSelectedLanguage] = useState("French");
+  const [selectedLevel, setSelectedLevel] = useState("A1 Beginner");
+  const [selectedPrice, setSelectedPrice] = useState("30 $");
+
   useEffect(() => {
     const teachersRef = ref(db);
     const unsubscribe = onValue(
@@ -38,6 +43,14 @@ function Teachers() {
     setVisibleTeachers((prev) => prev + 4);
   };
 
+  // Filter teachers based on selected options
+  const filteredTeachers = teachers.filter((teacher) => {
+    const matchesLanguage = teacher.languages.includes(selectedLanguage);
+    const matchesLevel = teacher.levels.includes(selectedLevel);
+    const matchesPrice = teacher.price_per_hour <= parseInt(selectedPrice);
+    return matchesLanguage && matchesLevel && matchesPrice;
+  });
+
   if (error) {
     return <div>Error loading teachers: {error.message}</div>;
   }
@@ -47,7 +60,10 @@ function Teachers() {
       <div className={styles.filterDiv}>
         <div>
           <label>Languages</label>
-          <select>
+          <select
+            value={selectedLanguage}
+            onChange={(e) => setSelectedLanguage(e.target.value)}
+          >
             <option defaultValue>French</option>
             <option>English</option>
             <option>German</option>
@@ -57,7 +73,10 @@ function Teachers() {
         </div>
         <div>
           <label>Level of knowledge</label>
-          <select>
+          <select
+            value={selectedLevel}
+            onChange={(e) => setSelectedLevel(e.target.value)}
+          >
             <option defaultValue>A1 Beginner</option>
             <option>A2 Elementary</option>
             <option>B1 Intermediate</option>
@@ -68,7 +87,10 @@ function Teachers() {
         </div>
         <div>
           <label>Price</label>
-          <select>
+          <select
+            value={selectedPrice}
+            onChange={(e) => setSelectedPrice(e.target.value)}
+          >
             <option>10 $</option>
             <option>20 $</option>
             <option defaultValue>30 $</option>
@@ -78,7 +100,7 @@ function Teachers() {
         </div>
       </div>
       <div className={styles.teacherList}>
-        {teachers.slice(0, visibleTeachers).map((teacher, index) => (
+        {filteredTeachers.slice(0, visibleTeachers).map((teacher, index) => (
           <TeacherCard key={index} teacher={teacher} />
         ))}
       </div>
