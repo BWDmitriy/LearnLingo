@@ -15,9 +15,8 @@ function Home() {
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <button>
-            <a href="/teachers">Get started</a>
-          </button>
+
+          <a href="/teachers">Get started</a>
         </div>
         <div className={styles.imageDiv}>
           <img src={headImage} alt="Head" className={styles.headImage} />

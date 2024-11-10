@@ -3,7 +3,7 @@
   gap: 48px;
   border-radius: 24px;
   padding: 24px;
-  width: 1184px;
+  max-width: 1184px;
   min-height: 328px;
   background-color: #fff;
   color: #121417;

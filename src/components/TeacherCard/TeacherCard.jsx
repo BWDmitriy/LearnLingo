@@ -1,13 +1,28 @@
-// src/TeacherCard.jsx
-import { useState } from "react";
+// src/components/TeacherCard/TeacherCard.jsx
+import { useState, useEffect } from "react";
 import styles from "./TeacherCard.module.css";
 import BookTrialLesson from "../BookTrialLesson/BookTrialLesson";
 import sprite from "../../assets/icons.svg";
+import { auth } from "../../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 function TeacherCard({ teacher }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    // Check if the teacher is already in favorites
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setIsFavorite(favorites.includes(teacher.id));
+
+    return () => unsubscribe();
+  }, [teacher.id]);
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -17,7 +32,25 @@ function TeacherCard({ teacher }) {
   const closeBookingModal = () => setIsBookingModalOpen(false);
 
   const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
+    if (!user) {
+      alert("This feature is available only for authorized users.");
+      return;
+    }
+
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    if (isFavorite) {
+      // Remove from favorites
+      const updatedFavorites = favorites.filter((id) => id !== teacher.id);
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setIsFavorite(false);
+    } else {
+      // Add to favorites
+      if (teacher.id !== null && !favorites.includes(teacher.id)) {
+        favorites.push(teacher.id);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        setIsFavorite(true);
+      }
+    }
   };
 
   return (

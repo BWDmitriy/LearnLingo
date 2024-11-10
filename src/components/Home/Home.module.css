@@ -45,22 +45,23 @@
   max-width: 470px;
 }
 
-.descriptionDiv button {
+.descriptionDiv a {
   border-radius: 12px;
-  padding: 16px 88px;
-  width: 267px;
-  height: 60px;
-  background-color: #f4c550;
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 156%;
-  color: #121417;
-  border: none;
-  cursor: pointer;
-  margin-top: 1rem;
+    padding: 16px 88px;
+    width: fit-content;
+    /* height: 60px; */
+    background-color: #f4c550;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: #121417;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
 }
-.descriptionDiv button:hover {
+.descriptionDiv a:hover {
   background-color: #ffdc86;
 }
 .imageDiv {
