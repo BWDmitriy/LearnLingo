@@ -11,15 +11,7 @@
   margin: auto;
 }
 
-.closeButton {
-  position: absolute;
-  top: 32px;
-  right: 32px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
+
 
 h1 {
   font-family: var(--font-family);
@@ -83,7 +75,28 @@ button {
   background-color: #f4c550;
   border: none;
   cursor: pointer;
+  font-family: var(--font-family);
+font-weight: 700;
+font-size: 18px;
+line-height: 156%;
+color: #121417;
 }
 button:hover {
   background-color: #ffdc86;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }

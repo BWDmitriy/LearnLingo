@@ -75,3 +75,17 @@ button {
 button:hover {
   background-color: #ffdc86;
 }
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.passwordInput .icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
