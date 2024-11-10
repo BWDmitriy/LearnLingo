@@ -19,7 +19,11 @@
       <path fill="#f4c550" stroke="#f4c550" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.454" d="M31.384 4.355a8.672 8.672 0 0 0-6.13-2.54 8.664 8.664 0 0 0-6.13 2.54l-1.67 1.67-1.67-1.67a8.669 8.669 0 0 0-12.26 12.26l13.93 13.93 13.93-13.93a8.672 8.672 0 0 0 2.54-6.13 8.664 8.664 0 0 0-2.54-6.13z" style="fill:var(--color1, #f4c550);stroke:var(--color1, #f4c550)"/>
     </symbol>
     <symbol id="icon-star" viewBox="0 0 32 32">
-<path fill="#ffc531" style="fill: var(--color1, #ffc531); stroke: var(--color1, #ffc531)" stroke="#ffc531" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.4" d="M12.4 9.394l3.6-6.822 3.6 6.822c0.318 0.603 0.899 1.025 1.571 1.141l7.601 1.315-5.376 5.532c-0.475 0.489-0.697 1.171-0.6 1.846l1.098 7.635-6.922-3.404c-0.612-0.301-1.329-0.301-1.941 0l-6.922 3.404 1.098-7.635c0.097-0.675-0.125-1.357-0.6-1.846l-5.376-5.532 7.601-1.315c0.672-0.116 1.252-0.538 1.571-1.141zM29.035 11.579v0zM7.767 27.031c0 0 0 0 0 0h-0z"></path>
-</symbol>
+      <path fill="#ffc531" style="fill: var(--color1, #ffc531); stroke: var(--color1, #ffc531)" stroke="#ffc531" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.4" d="M12.4 9.394l3.6-6.822 3.6 6.822c0.318 0.603 0.899 1.025 1.571 1.141l7.601 1.315-5.376 5.532c-0.475 0.489-0.697 1.171-0.6 1.846l1.098 7.635-6.922-3.404c-0.612-0.301-1.329-0.301-1.941 0l-6.922 3.404 1.098-7.635c0.097-0.675-0.125-1.357-0.6-1.846l-5.376-5.532 7.601-1.315c0.672-0.116 1.252-0.538 1.571-1.141zM29.035 11.579v0zM7.767 27.031c0 0 0 0 0 0h-0z"></path>
+    </symbol>
+    <symbol id="icon-ukraine" viewBox="0 0 32 32">
+      <path fill="#ffda44" style="fill: var(--color1, #ffda44); stroke: var(--color2, #000)" stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.1429" d="M31.429 16c0 8.521-6.908 15.429-15.429 15.429s-15.429-6.908-15.429-15.429c0-8.521 6.908-15.429 15.429-15.429s15.429 6.908 15.429 15.429z"></path>
+      <path fill="#338af3" style="fill: var(--color3, #338af3)" d="M0 16c0-8.836 7.163-16 16-16s16 7.163 16 16z"></path>
+    </symbol>
   </defs>
 </svg>
