@@ -18,7 +18,6 @@ function TeacherCard({ teacher }) {
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
-    // Optionally, handle favorite logic here (e.g., save to localStorage or Firebase)
   };
 
   return (
@@ -68,7 +67,7 @@ function TeacherCard({ teacher }) {
             </a>
           </div>
         </div>
-        <div>
+        <div className={styles.teacherInfo}>
           <p>
             <span className={styles.teacherCardSpan}>Speaks:</span>{" "}
             {teacher.languages.join(", ")}
@@ -82,76 +81,75 @@ function TeacherCard({ teacher }) {
             {teacher.conditions.join(", ")}
           </p>
         </div>
-        <div>
-          <a className={styles.readMore} onClick={toggleExpand}>
-            Read more
-          </a>
-        </div>
-        {isExpanded && (
+
+        {!isExpanded && (
           <div>
-            <p
-              style={{
-                fontFamily: "var(--font-family)",
-                fontWeight: 400,
-                fontSize: "16px",
-                lineHeight: "150%",
-                color: "#121417",
-              }}
-            >
-              {teacher.experience}
-            </p>
+            <a className={styles.readMore} onClick={toggleExpand}>
+              Read more
+            </a>
+          </div>
+        )}
+
+        {isExpanded && (
+          <div className={styles.teacherDetails}>
+            <p className={styles.teacherExperience}>{teacher.experience}</p>
             <div className={styles.reviewsDiv}>
               {teacher.reviews.map((review, index) => (
                 <div key={index} className={styles.reviewer}>
                   <div className={styles.reviewProfile}>
-                    <img src="placeholder" alt="Profile" />
+                    <div className={styles.reviewerPhoto}>
+                      {review.reviewer_photo ? (
+                        <img src={review.reviewer_photo} alt={review.name} />
+                      ) : (
+                        <span>{review.reviewer_name.charAt(0)}</span>
+                      )}
+                    </div>
                     <div>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-family)",
-                          fontWeight: 500,
-                          fontSize: "16px",
-                          lineHeight: "150%",
-                          color: "#8a8a89",
-                        }}
-                      >
-                        {review.name}
-                      </p>
+                      <p>{review.reviewer_name}</p>
                       <p>
                         <svg width="16" height="16">
                           <use xlinkHref={`${sprite}#icon-star`} />
                         </svg>
-                        {review.rating}
+                        {review.reviewer_rating}
                       </p>
                     </div>
                   </div>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-family)",
-                      fontWeight: 500,
-                      fontSize: "16px",
-                      lineHeight: "150%",
-                      color: "#121417",
-                    }}
-                  >
-                    {review.comment}
-                  </p>
+                  <p className={styles.reviewComment}>{review.comment}</p>
                 </div>
               ))}
             </div>
-            <button onClick={openBookingModal}>Book trial lesson</button>
+            <div className={styles.levels}>
+              {teacher.levels.map((level, index) => (
+                <div
+                  key={index}
+                  className={
+                    index === 0 ? styles.firstLevel : styles.otherLevels
+                  }
+                >
+                  #{level}
+                </div>
+              ))}
+            </div>
+            <button
+              className={styles.bookTrialButton}
+              onClick={openBookingModal}
+            >
+              Book trial lesson
+            </button>
           </div>
         )}
-        <div className={styles.levels}>
-          {teacher.levels.map((level, index) => (
-            <div
-              key={index}
-              className={index === 0 ? styles.firstLevel : styles.otherLevels}
-            >
-              #{level}
-            </div>
-          ))}
-        </div>
+        {!isExpanded && (
+          <div className={styles.levels}>
+            {teacher.levels.map((level, index) => (
+              <div
+                key={index}
+                className={index === 0 ? styles.firstLevel : styles.otherLevels}
+              >
+                #{level}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       {isBookingModalOpen && (
         <div className={styles.modalBackdrop} onClick={closeBookingModal}>

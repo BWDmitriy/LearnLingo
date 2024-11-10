@@ -30,6 +30,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: start;
+  gap: 32px;
 }
 
 .teacherStatsDiv {
@@ -146,4 +147,82 @@ color: #121417;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.reviewer {
+  margin-bottom: 16px; /* Add some space between reviews */
+}
+
+.reviewProfile {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between photo and name */
+}
+
+.reviewerPhoto {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.reviewProfile p {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.reviewComment {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+  margin-top: 8px; 
+}
+.teacherInfo {
+  display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #121417;
+    
+}
+.teacherExperience {
+  font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: rgb(18, 20, 23);
+}
+
+.bookTrialButton {
+  border-radius: 12px;
+padding: 16px 48px;
+width: 232px;
+height: 60px;
+background-color: #f4c550;
+font-family: var(--font-family);
+font-weight: 700;
+font-size: 18px;
+line-height: 156%;
+color: #121417;
+}
+.bookTrialButton:hover {
+  background-color: #ffdc86
+}
+.teacherDetails {
+  display:flex;
+  flex-direction: column;
+  gap:32px;
 }
