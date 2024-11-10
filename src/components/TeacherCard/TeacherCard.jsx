@@ -56,8 +56,14 @@ function TeacherCard({ teacher }) {
             <div className={styles.divider}></div>
             <p>Price / 1 hour: {teacher.price_per_hour}$</p>
             <a onClick={toggleFavorite} className={styles.favoriteButton}>
-              <svg width="16" height="16" >
-                <use xlinkHref={isFavorite ? `${sprite}#icon-fav-selected` : `${sprite}#icon-fav`} />
+              <svg width="16" height="16">
+                <use
+                  xlinkHref={
+                    isFavorite
+                      ? `${sprite}#icon-fav-selected`
+                      : `${sprite}#icon-fav`
+                  }
+                />
               </svg>
             </a>
           </div>
@@ -136,12 +142,27 @@ function TeacherCard({ teacher }) {
             <button onClick={openBookingModal}>Book trial lesson</button>
           </div>
         )}
+        <div className={styles.levels}>
+          {teacher.levels.map((level, index) => (
+            <div
+              key={index}
+              className={index === 0 ? styles.firstLevel : styles.otherLevels}
+            >
+              #{level}
+            </div>
+          ))}
+        </div>
       </div>
       {isBookingModalOpen && (
         <div className={styles.modalBackdrop} onClick={closeBookingModal}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
             <BookTrialLesson teacher={teacher} />
-            <button className={styles.closeButton} onClick={closeBookingModal}>&times;</button>
+            <button className={styles.closeButton} onClick={closeBookingModal}>
+              &times;
+            </button>
           </div>
         </div>
       )}

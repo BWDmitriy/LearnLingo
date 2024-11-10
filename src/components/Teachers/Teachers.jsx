@@ -50,7 +50,9 @@ function Teachers() {
         ))}
       </div>
       {visibleTeachers < teachers.length && (
-        <button onClick={loadMoreTeachers}>Load More</button>
+        <button className={styles.loadMore} onClick={loadMoreTeachers}>
+          Load More
+        </button>
       )}
     </div>
   );

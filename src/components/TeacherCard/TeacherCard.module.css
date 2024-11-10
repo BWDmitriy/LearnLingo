@@ -116,3 +116,31 @@ color: #121417;
   height: 32px;
 }
 
+.levels {
+  display: flex;
+  gap: 8px; /* Adjust the gap as needed */
+  margin-top: 16px; /* Add some margin to separate from other content */
+}
+
+.firstLevel {
+  border-radius: 35px;
+  padding: 8px 12px;
+  width: fit-content;
+  height: 32px;
+  background-color: #f4c550;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.otherLevels {
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  width: fit-content;
+  height: 32px;
+  background-color: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
