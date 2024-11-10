@@ -61,7 +61,6 @@
   cursor: pointer;
 }
 
-/* src/Header.module.css */
 .header {
   background-color: #f4f4f4;
   padding: 10px;
@@ -109,4 +108,8 @@ nav ul li a, nav ul li button {
   max-width: 500px;
   width: 100%;
   margin: 0 20px;
+}
+
+.loginButton {
+  cursor: pointer;
 }
