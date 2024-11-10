@@ -72,7 +72,9 @@ function LogIn({ onClose }) {
           </span>
         </div>
         <p className={styles.error}>{errors.password?.message}</p>
-        <button type="submit">Log In</button>
+        <button className={styles.loginButton} type="submit">
+          Log In
+        </button>
       </form>
     </div>
   );

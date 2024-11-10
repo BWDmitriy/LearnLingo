@@ -190,6 +190,7 @@ color: #121417;
   line-height: 150%;
   color: #121417;
   margin-top: 8px; 
+  
 }
 .teacherInfo {
   display: flex;
@@ -209,7 +210,7 @@ color: #121417;
 .bookTrialButton {
   border-radius: 12px;
 padding: 16px 48px;
-width: 232px;
+width: fit-content;
 height: 60px;
 background-color: #f4c550;
 font-family: var(--font-family);
@@ -217,6 +218,7 @@ font-weight: 700;
 font-size: 18px;
 line-height: 156%;
 color: #121417;
+border: none;
 }
 .bookTrialButton:hover {
   background-color: #ffdc86

@@ -74,7 +74,9 @@ function Registration({ onClose }) {
           </span>
         </div>
         <p className={styles.error}>{errors.password?.message}</p>
-        <button type="submit">Sign Up</button>
+        <button className={styles.regButton} type="submit">
+          Sign Up
+        </button>
       </form>
     </div>
   );

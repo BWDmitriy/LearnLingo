@@ -50,7 +50,7 @@ function TeacherCard({ teacher }) {
               <svg width="16" height="16">
                 <use xlinkHref={`${sprite}#icon-star`} />
               </svg>
-              Rating: {teacher.rating}
+              Rating: {teacher.rating.toFixed(1)}
             </p>
             <div className={styles.divider}></div>
             <p>Price / 1 hour: {teacher.price_per_hour}$</p>
@@ -110,7 +110,7 @@ function TeacherCard({ teacher }) {
                         <svg width="16" height="16">
                           <use xlinkHref={`${sprite}#icon-star`} />
                         </svg>
-                        {review.reviewer_rating}
+                        {review.reviewer_rating}.0
                       </p>
                     </div>
                   </div>
