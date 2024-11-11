@@ -101,7 +101,7 @@ function Teachers() {
       </div>
       <div className={styles.teacherList}>
         {filteredTeachers.slice(0, visibleTeachers).map((teacher, index) => (
-          <TeacherCard key={index} teacher={teacher} teacherIndex={index} />
+          <TeacherCard key={index} teacher={teacher} />
         ))}
       </div>
       {visibleTeachers < teachers.length && (

@@ -7,7 +7,7 @@ import { auth } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import PropTypes from "prop-types";
 
-function TeacherCard({ teacher, teacherIndex }) {
+function TeacherCard({ teacher }) {
   console.log("Teacher data:", teacher);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -44,17 +44,17 @@ function TeacherCard({ teacher, teacherIndex }) {
 
     if (isFavorite) {
       // Remove from favorites
-      const updatedFavorites = favorites.filter((id) => id !== teacherIndex);
+      const updatedFavorites = favorites.filter((id) => id !== teacher.id);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       setIsFavorite(false);
-      console.log(`Removed teacher ${teacherIndex} from favorites`);
+      console.log(`Removed teacher ${teacher.id} from favorites`);
     } else {
       // Add to favorites
-      if (!favorites.includes(teacherIndex)) {
-        favorites.push(teacherIndex);
+      if (!favorites.includes(teacher.id)) {
+        favorites.push(teacher.id);
         localStorage.setItem("favorites", JSON.stringify(favorites));
         setIsFavorite(true);
-        console.log(`Added teacher ${teacherIndex} to favorites`);
+        console.log(`Added teacher ${teacher.id} to favorites`);
       }
     }
   };
@@ -93,6 +93,19 @@ function TeacherCard({ teacher, teacherIndex }) {
             </p>
             <div className={styles.divider}></div>
             <p>Price / 1 hour: {teacher.price_per_hour}$</p>
+            {/* {favorite !== `yes` && (
+              <a onClick={toggleFavorite} className={styles.favoriteButton}>
+                <svg width="16" height="16">
+                  <use
+                    xlinkHref={
+                      isFavorite
+                        ? `${sprite}#icon-fav-selected`
+                        : `${sprite}#icon-fav`
+                    }
+                  />
+                </svg>
+              </a>
+            )} */}
             <a onClick={toggleFavorite} className={styles.favoriteButton}>
               <svg width="16" height="16">
                 <use
@@ -209,7 +222,6 @@ function TeacherCard({ teacher, teacherIndex }) {
 
 TeacherCard.propTypes = {
   teacher: PropTypes.func.isRequired,
-  teacherIndex: PropTypes.func.isRequired,
 };
 
 export default TeacherCard;

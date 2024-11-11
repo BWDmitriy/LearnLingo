@@ -49,12 +49,17 @@ function Header() {
       </div>
       <div className={styles.headerAuth}>
         {user ? (
-          <a className={styles.loginButton} onClick={handleLogout}>
-            <svg width="20" height="20">
-              <use xlinkHref={`${sprite}#icon-login`} />
-            </svg>
-            &nbsp;Log Out
-          </a>
+          <>
+            <div className={styles.headerLinks}>
+              <a href="/favorites">Favorites</a>
+            </div>
+            <a className={styles.loginButton} onClick={handleLogout}>
+              <svg width="20" height="20">
+                <use xlinkHref={`${sprite}#icon-login`} />
+              </svg>
+              &nbsp;Log Out
+            </a>
+          </>
         ) : (
           <>
             <a className={styles.loginButton} onClick={openLogIn}>

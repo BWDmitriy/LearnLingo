@@ -22,7 +22,8 @@ function Favorites() {
 
   useEffect(() => {
     if (user) {
-      const favoriteIds = JSON.parse(localStorage.getItem("favorites")) || [];
+      const favoriteIndices =
+        JSON.parse(localStorage.getItem("favorites")) || [];
       const teachersRef = ref(db);
 
       const unsubscribe = onValue(
@@ -31,8 +32,8 @@ function Favorites() {
           const data = snapshot.val();
           if (data) {
             const teachersList = Object.values(data);
-            const filteredTeachers = teachersList.filter((teacher) =>
-              favoriteIds.includes(teacher.id)
+            const filteredTeachers = teachersList.filter((_, index) =>
+              favoriteIndices.includes(index)
             );
             setFavorites(filteredTeachers);
           } else {
@@ -62,8 +63,8 @@ function Favorites() {
       <h1>Your Favorites</h1>
       <div className={styles.teacherList}>
         {favorites.length > 0 ? (
-          favorites.map((teacher, index) => (
-            <TeacherCard key={index} teacher={teacher} />
+          favorites.map((teacher, index, favorite) => (
+            <TeacherCard key={index} teacher={teacher} favorite={`yes`} />
           ))
         ) : (
           <p>No favorite teachers found.</p>
