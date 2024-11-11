@@ -10,10 +10,11 @@ function Header() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isLogInOpen, setIsLogInOpen] = useState(false);
   const [user, setUser] = useState(null);
-
+  const [loadingAuth, setLoadingAuth] = useState(true);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoadingAuth(false);
     });
 
     return () => unsubscribe();
@@ -33,6 +34,10 @@ function Header() {
       console.error("Error logging out:", error.message);
     }
   };
+
+  if (loadingAuth) {
+    return null;
+  }
 
   return (
     <header className={styles.header}>

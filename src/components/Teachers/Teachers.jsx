@@ -3,6 +3,7 @@ import { db } from "../../firebaseConfig.js";
 import { useEffect, useState } from "react";
 import styles from "./Teachers.module.css";
 import { ref, onValue } from "firebase/database";
+import Loader from "../Loader/Loader.jsx";
 
 function Teachers() {
   const [teachers, setTeachers] = useState([]);
@@ -12,6 +13,8 @@ function Teachers() {
   const [selectedLanguage, setSelectedLanguage] = useState("French");
   const [selectedLevel, setSelectedLevel] = useState("A1 Beginner");
   const [selectedPrice, setSelectedPrice] = useState("30 $");
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const teachersRef = ref(db);
@@ -26,10 +29,12 @@ function Teachers() {
         } else {
           setTeachers([]);
         }
+        setLoading(false);
       },
       (error) => {
         console.error("Error fetching teachers:", error);
         setError(error);
+        setLoading(false);
       }
     );
 
@@ -46,6 +51,10 @@ function Teachers() {
     const matchesPrice = teacher.price_per_hour <= parseInt(selectedPrice);
     return matchesLanguage && matchesLevel && matchesPrice;
   });
+
+  if (loading) {
+    return <Loader />; // Show loader while loading
+  }
 
   if (error) {
     return <div>Error loading teachers: {error.message}</div>;
