@@ -1,4 +1,3 @@
-// src/components/Header/Header.jsx
 import { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import styles from "./Header.module.css";

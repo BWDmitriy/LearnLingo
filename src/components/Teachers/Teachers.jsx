@@ -1,7 +1,5 @@
-// src/Teachers.jsx
 import TeacherCard from "../TeacherCard/TeacherCard";
 import { db } from "../../firebaseConfig.js";
-
 import { useEffect, useState } from "react";
 import styles from "./Teachers.module.css";
 import { ref, onValue } from "firebase/database";
@@ -11,7 +9,6 @@ function Teachers() {
   const [visibleTeachers, setVisibleTeachers] = useState(4);
   const [error, setError] = useState(null);
 
-  // State for filters
   const [selectedLanguage, setSelectedLanguage] = useState("French");
   const [selectedLevel, setSelectedLevel] = useState("A1 Beginner");
   const [selectedPrice, setSelectedPrice] = useState("30 $");
@@ -43,7 +40,6 @@ function Teachers() {
     setVisibleTeachers((prev) => prev + 4);
   };
 
-  // Filter teachers based on selected options
   const filteredTeachers = teachers.filter((teacher) => {
     const matchesLanguage = teacher.languages.includes(selectedLanguage);
     const matchesLevel = teacher.levels.includes(selectedLevel);

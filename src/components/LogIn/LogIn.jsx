@@ -1,4 +1,3 @@
-// src/components/LogIn/LogIn.jsx
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,7 +34,7 @@ function LogIn({ onClose }) {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
       console.log("User logged in successfully");
-      onClose(); // Close the login modal on success
+      onClose();
     } catch (error) {
       console.error("Error logging in:", error.message);
     }

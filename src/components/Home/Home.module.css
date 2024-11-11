@@ -1,6 +1,5 @@
 .main {
-      display: flex;
-    /* flex-direction: column; */
+    display: flex;
     align-items: center;
     padding: 2rem;
     gap: 24px;
@@ -49,7 +48,6 @@
   border-radius: 12px;
     padding: 16px 88px;
     width: fit-content;
-    /* height: 60px; */
     background-color: #f4c550;
     font-family: var(--font-family);
     font-weight: 700;

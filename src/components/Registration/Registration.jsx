@@ -1,4 +1,3 @@
-// src/components/Registration/Registration.jsx
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -35,7 +34,7 @@ function Registration({ onClose }) {
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
       console.log("User registered successfully");
-      onClose(); // Close the registration modal on success
+      onClose();
     } catch (error) {
       console.error("Error registering:", error.message);
     }

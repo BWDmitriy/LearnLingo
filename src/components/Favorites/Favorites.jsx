@@ -1,4 +1,3 @@
-// src/components/Favorites/Favorites.jsx
 import { useState, useEffect } from "react";
 import TeacherCard from "../TeacherCard/TeacherCard";
 import styles from "./Favorites.module.css";

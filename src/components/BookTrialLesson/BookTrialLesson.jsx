@@ -1,4 +1,3 @@
-// src/BookTrialLesson.jsx
 import styles from "./BookTrialLesson.module.css";
 import PropTypes from "prop-types";
 

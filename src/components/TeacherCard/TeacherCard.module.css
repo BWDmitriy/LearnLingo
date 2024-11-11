@@ -86,7 +86,6 @@ color: #121417;
   color: #8a8a89;
 }
 
-/* src/TeacherCard.module.css */
 .modalBackdrop {
   position: fixed;
   top: 0;
@@ -122,8 +121,8 @@ color: #121417;
 
 .levels {
   display: flex;
-  gap: 8px; /* Adjust the gap as needed */
-  margin-top: 16px; /* Add some margin to separate from other content */
+  gap: 8px; 
+  margin-top: 16px; 
 }
 
 .firstLevel {
@@ -150,13 +149,13 @@ color: #121417;
 }
 
 .reviewer {
-  margin-bottom: 16px; /* Add some space between reviews */
+  margin-bottom: 16px; 
 }
 
 .reviewProfile {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between photo and name */
+  gap: 8px;
 }
 
 .reviewerPhoto {

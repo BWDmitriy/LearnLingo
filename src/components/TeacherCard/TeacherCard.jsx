@@ -1,4 +1,3 @@
-// src/components/TeacherCard/TeacherCard.jsx
 import { useState, useEffect } from "react";
 import styles from "./TeacherCard.module.css";
 import BookTrialLesson from "../BookTrialLesson/BookTrialLesson";
@@ -19,7 +18,6 @@ function TeacherCard({ teacher }) {
       setUser(currentUser);
     });
 
-    // Check if the teacher is already in favorites
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setIsFavorite(favorites.includes(teacher.id));
 
@@ -43,13 +41,11 @@ function TeacherCard({ teacher }) {
     console.log("Current favorites:", favorites);
 
     if (isFavorite) {
-      // Remove from favorites
       const updatedFavorites = favorites.filter((id) => id !== teacher.id);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       setIsFavorite(false);
       console.log(`Removed teacher ${teacher.id} from favorites`);
     } else {
-      // Add to favorites
       if (!favorites.includes(teacher.id)) {
         favorites.push(teacher.id);
         localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -93,19 +89,6 @@ function TeacherCard({ teacher }) {
             </p>
             <div className={styles.divider}></div>
             <p>Price / 1 hour: {teacher.price_per_hour}$</p>
-            {/* {favorite !== `yes` && (
-              <a onClick={toggleFavorite} className={styles.favoriteButton}>
-                <svg width="16" height="16">
-                  <use
-                    xlinkHref={
-                      isFavorite
-                        ? `${sprite}#icon-fav-selected`
-                        : `${sprite}#icon-fav`
-                    }
-                  />
-                </svg>
-              </a>
-            )} */}
             <a onClick={toggleFavorite} className={styles.favoriteButton}>
               <svg width="16" height="16">
                 <use
