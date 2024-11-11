@@ -7,7 +7,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import PropTypes from "prop-types";
 
 function TeacherCard({ teacher }) {
-  console.log("Teacher data:", teacher);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -38,19 +37,16 @@ function TeacherCard({ teacher }) {
     }
 
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    console.log("Current favorites:", favorites);
 
     if (isFavorite) {
       const updatedFavorites = favorites.filter((id) => id !== teacher.id);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       setIsFavorite(false);
-      console.log(`Removed teacher ${teacher.id} from favorites`);
     } else {
       if (!favorites.includes(teacher.id)) {
         favorites.push(teacher.id);
         localStorage.setItem("favorites", JSON.stringify(favorites));
         setIsFavorite(true);
-        console.log(`Added teacher ${teacher.id} to favorites`);
       }
     }
   };

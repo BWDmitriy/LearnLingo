@@ -22,7 +22,6 @@ function Teachers() {
       teachersRef,
       (snapshot) => {
         const data = snapshot.val();
-        console.log("Fetched data:", data);
         if (data) {
           const teachersList = Object.values(data);
           setTeachers(teachersList);

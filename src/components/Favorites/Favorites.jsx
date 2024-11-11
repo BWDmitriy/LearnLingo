@@ -50,7 +50,11 @@ function Favorites() {
   }, [user]);
 
   if (!user) {
-    return <div>Please log in to view your favorites.</div>;
+    return (
+      <div className={styles.unlogged}>
+        Please log in to view your favorites.
+      </div>
+    );
   }
 
   if (error) {
@@ -62,8 +66,8 @@ function Favorites() {
       <h1>Your Favorites</h1>
       <div className={styles.teacherList}>
         {favorites.length > 0 ? (
-          favorites.map((teacher, index, favorite) => (
-            <TeacherCard key={index} teacher={teacher} favorite={`yes`} />
+          favorites.map((teacher, index) => (
+            <TeacherCard key={index} teacher={teacher} />
           ))
         ) : (
           <p>No favorite teachers found.</p>
