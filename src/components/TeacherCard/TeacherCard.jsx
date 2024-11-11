@@ -7,7 +7,8 @@ import { auth } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import PropTypes from "prop-types";
 
-function TeacherCard({ teacher }) {
+function TeacherCard({ teacher, teacherIndex }) {
+  console.log("Teacher data:", teacher);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -39,17 +40,21 @@ function TeacherCard({ teacher }) {
     }
 
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    console.log("Current favorites:", favorites);
+
     if (isFavorite) {
       // Remove from favorites
-      const updatedFavorites = favorites.filter((id) => id !== teacher.id);
+      const updatedFavorites = favorites.filter((id) => id !== teacherIndex);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       setIsFavorite(false);
+      console.log(`Removed teacher ${teacherIndex} from favorites`);
     } else {
       // Add to favorites
-      if (teacher.id !== null && !favorites.includes(teacher.id)) {
-        favorites.push(teacher.id);
+      if (!favorites.includes(teacherIndex)) {
+        favorites.push(teacherIndex);
         localStorage.setItem("favorites", JSON.stringify(favorites));
         setIsFavorite(true);
+        console.log(`Added teacher ${teacherIndex} to favorites`);
       }
     }
   };
@@ -204,6 +209,7 @@ function TeacherCard({ teacher }) {
 
 TeacherCard.propTypes = {
   teacher: PropTypes.func.isRequired,
+  teacherIndex: PropTypes.func.isRequired,
 };
 
 export default TeacherCard;
