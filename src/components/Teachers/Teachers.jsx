@@ -9,11 +9,9 @@ function Teachers() {
   const [teachers, setTeachers] = useState([]);
   const [visibleTeachers, setVisibleTeachers] = useState(4);
   const [error, setError] = useState(null);
-
-  const [selectedLanguage, setSelectedLanguage] = useState("French");
-  const [selectedLevel, setSelectedLevel] = useState("A1 Beginner");
-  const [selectedPrice, setSelectedPrice] = useState("30 $");
-
+  const [selectedLanguage, setSelectedLanguage] = useState(false);
+  const [selectedLevel, setSelectedLevel] = useState(false);
+  const [selectedPrice, setSelectedPrice] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,19 +38,20 @@ function Teachers() {
     return () => unsubscribe();
   }, []);
 
-  const loadMoreTeachers = () => {
-    setVisibleTeachers((prev) => prev + 4);
-  };
-
-  const filteredTeachers = teachers.filter((teacher) => {
+  const filteredData = teachers.filter((teacher) => {
     const matchesLanguage = teacher.languages.includes(selectedLanguage);
     const matchesLevel = teacher.levels.includes(selectedLevel);
     const matchesPrice = teacher.price_per_hour <= parseInt(selectedPrice);
     return matchesLanguage && matchesLevel && matchesPrice;
   });
 
+  console.log(filteredData);
+  const loadMoreTeachers = () => {
+    setVisibleTeachers((prev) => prev + 4);
+  };
+
   if (loading) {
-    return <Loader />; // Show loader while loading
+    return <Loader />;
   }
 
   if (error) {
@@ -68,7 +67,7 @@ function Teachers() {
             value={selectedLanguage}
             onChange={(e) => setSelectedLanguage(e.target.value)}
           >
-            <option defaultValue>French</option>
+            <option>French</option>
             <option>English</option>
             <option>German</option>
             <option>Ukrainian</option>
@@ -81,7 +80,7 @@ function Teachers() {
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
           >
-            <option defaultValue>A1 Beginner</option>
+            <option>A1 Beginner</option>
             <option>A2 Elementary</option>
             <option>B1 Intermediate</option>
             <option>B2 Upper-Intermediate</option>
@@ -97,16 +96,24 @@ function Teachers() {
           >
             <option>10 $</option>
             <option>20 $</option>
-            <option defaultValue>30 $</option>
+            <option>30 $</option>
             <option>40 $</option>
             <option>50 $</option>
           </select>
         </div>
       </div>
       <div className={styles.teacherList}>
-        {filteredTeachers.slice(0, visibleTeachers).map((teacher, index) => (
-          <TeacherCard key={index} teacher={teacher} />
-        ))}
+        {filteredData.length > 0
+          ? filteredData
+              .slice(0, visibleTeachers)
+              .map((teacher, index) => (
+                <TeacherCard key={index} teacher={teacher} />
+              ))
+          : teachers
+              .slice(0, visibleTeachers)
+              .map((teacher, index) => (
+                <TeacherCard key={index} teacher={teacher} />
+              ))}
       </div>
       {visibleTeachers < teachers.length && (
         <button className={styles.loadMore} onClick={loadMoreTeachers}>
