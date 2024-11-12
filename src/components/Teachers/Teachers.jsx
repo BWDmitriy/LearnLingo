@@ -37,6 +37,7 @@ function Teachers() {
 
     return () => unsubscribe();
   }, []);
+  const handleRemoveFavorite = () => {};
 
   const filteredData = teachers.filter((teacher) => {
     const matchesLanguage = teacher.languages.includes(selectedLanguage);
@@ -110,18 +111,30 @@ function Teachers() {
           ? filteredData
               .slice(0, visibleTeachers)
               .map((teacher, index) => (
-                <TeacherCard key={index} teacher={teacher} />
+                <TeacherCard
+                  key={index}
+                  teacher={teacher}
+                  onRemoveFavorite={handleRemoveFavorite}
+                />
               ))
           : ((selectedLanguage || selectedLevel || selectedPrice) &&
               filteredData
                 .slice(0, visibleTeachers)
                 .map((teacher, index) => (
-                  <TeacherCard key={index} teacher={teacher} />
+                  <TeacherCard
+                    key={index}
+                    teacher={teacher}
+                    onRemoveFavorite={handleRemoveFavorite}
+                  />
                 ))) ||
             teachers
               .slice(0, visibleTeachers)
               .map((teacher, index) => (
-                <TeacherCard key={index} teacher={teacher} />
+                <TeacherCard
+                  key={index}
+                  teacher={teacher}
+                  onRemoveFavorite={handleRemoveFavorite}
+                />
               ))}
       </div>
       {visibleTeachers < teachers.length && (
