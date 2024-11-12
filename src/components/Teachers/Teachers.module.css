@@ -54,6 +54,7 @@ margin-left: 25%;
   background-color: #ffdc86;
 }
 
-
-
+option:first-of-type {
+    color: #8a8a89;
+}
 

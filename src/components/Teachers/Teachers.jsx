@@ -67,6 +67,7 @@ function Teachers() {
             value={selectedLanguage}
             onChange={(e) => setSelectedLanguage(e.target.value)}
           >
+            <option hidden>Select language</option>
             <option>French</option>
             <option>English</option>
             <option>German</option>
@@ -80,6 +81,7 @@ function Teachers() {
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
           >
+            <option hidden>Select level</option>
             <option>A1 Beginner</option>
             <option>A2 Elementary</option>
             <option>B1 Intermediate</option>
@@ -94,6 +96,7 @@ function Teachers() {
             value={selectedPrice}
             onChange={(e) => setSelectedPrice(e.target.value)}
           >
+            <option hidden>Select price</option>
             <option>10 $</option>
             <option>20 $</option>
             <option>30 $</option>
@@ -109,7 +112,13 @@ function Teachers() {
               .map((teacher, index) => (
                 <TeacherCard key={index} teacher={teacher} />
               ))
-          : teachers
+          : ((selectedLanguage || selectedLevel || selectedPrice) &&
+              filteredData
+                .slice(0, visibleTeachers)
+                .map((teacher, index) => (
+                  <TeacherCard key={index} teacher={teacher} />
+                ))) ||
+            teachers
               .slice(0, visibleTeachers)
               .map((teacher, index) => (
                 <TeacherCard key={index} teacher={teacher} />
