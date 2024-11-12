@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import PropTypes from "prop-types";
 import iziToast from "izitoast";
 
-function TeacherCard({ teacher }) {
+function TeacherCard({ teacher, onRemoveFavorite }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -46,6 +46,7 @@ function TeacherCard({ teacher }) {
       const updatedFavorites = favorites.filter((id) => id !== teacher.id);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       setIsFavorite(false);
+      onRemoveFavorite(teacher.id);
     } else {
       if (!favorites.includes(teacher.id)) {
         favorites.push(teacher.id);
@@ -205,6 +206,7 @@ function TeacherCard({ teacher }) {
 
 TeacherCard.propTypes = {
   teacher: PropTypes.func.isRequired,
+  onRemoveFavorite: PropTypes.func.isRequired,
 };
 
 export default TeacherCard;

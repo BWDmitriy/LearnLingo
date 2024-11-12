@@ -60,6 +60,11 @@ function Favorites() {
   if (error) {
     return <div>Error loading favorites: {error.message}</div>;
   }
+  const handleRemoveFavorite = (teacherId) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((teacher) => teacher.id !== teacherId)
+    );
+  };
 
   return (
     <div className={styles.favoritesPage}>
@@ -67,7 +72,11 @@ function Favorites() {
       <div className={styles.teacherList}>
         {favorites.length > 0 ? (
           favorites.map((teacher, index) => (
-            <TeacherCard key={index} teacher={teacher} />
+            <TeacherCard
+              key={index}
+              teacher={teacher}
+              onRemoveFavorite={handleRemoveFavorite}
+            />
           ))
         ) : (
           <p>No favorite teachers found.</p>
