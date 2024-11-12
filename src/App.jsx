@@ -17,7 +17,7 @@ function App() {
   const closeLogIn = () => setIsLogInOpen(false);
   useEffect(() => {
     if (!user) {
-      setIsLogInOpen(true); // Open login modal if user is not authenticated
+      setIsLogInOpen(true);
     }
   }, [user]);
   return (
