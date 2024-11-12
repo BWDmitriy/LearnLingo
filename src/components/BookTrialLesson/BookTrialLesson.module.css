@@ -76,15 +76,15 @@ h2 {
 .trialInputs {
   display: flex;
   flex-direction: column;
-  gap: 18px;
   margin-top: 20px;
 }
 
 .trialInputs input {
   border: 1px solid rgba(18, 20, 23, 0.1);
-border-radius: 12px;
-padding: 16px 18px;
-height: 20px;
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 20px;
+  margin-bottom: 5px;
 }
 
 .trialInputs input::placeholder {
@@ -114,9 +114,7 @@ height: 20px;
 .bookButton:hover {
   background-color: #ffdc86;
 }
-.container > div {
-  margin-bottom: 40px;
-}
+
 .closeButton {
   position: absolute;
   top: 32px;
@@ -125,4 +123,18 @@ height: 20px;
   border: none;
   font-size: 24px;
   cursor: pointer;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  height: 16px; 
+  margin: 0;
+  visibility: hidden; 
+  opacity: 0;
+  transition: opacity 0.3s ease; 
+}
+
+.error.visible {
+  visibility: visible;
+  opacity: 1;
 }

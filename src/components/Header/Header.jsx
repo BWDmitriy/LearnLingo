@@ -6,6 +6,7 @@ import LogIn from "../LogIn/LogIn";
 import { auth } from "../../firebaseConfig.js";
 import sprite from "../../assets/icons.svg";
 import { useLocation } from "react-router-dom";
+import iziToast from "izitoast";
 
 function Header() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
@@ -31,9 +32,15 @@ function Header() {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      console.log("User logged out successfully");
+      iziToast.success({
+        title: "Success",
+        message: "User logged out successfully",
+      });
     } catch (error) {
-      console.error("Error logging out:", error.message);
+      iziToast.error({
+        title: "Error",
+        message: `Error logging out: ${error.message}`,
+      });
     }
   };
 

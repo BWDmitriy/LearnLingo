@@ -7,6 +7,7 @@ import { auth } from "../../firebaseConfig";
 import styles from "./LogIn.module.css";
 import sprite from "../../assets/icons.svg";
 import PropTypes from "prop-types";
+import iziToast from "izitoast";
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -33,10 +34,16 @@ function LogIn({ onClose }) {
   const onSubmit = async (data) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
-      console.log("User logged in successfully");
+      iziToast.success({
+        title: "Success",
+        message: "User logged in successfully",
+      });
       onClose();
     } catch (error) {
-      console.error("Error logging in:", error.message);
+      iziToast.error({
+        title: "Error",
+        message: `Error logging in: ${error.message}`,
+      });
     }
   };
 
@@ -52,7 +59,9 @@ function LogIn({ onClose }) {
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.inputDiv}>
         <input type="email" placeholder="Email" {...register("email")} />
-        <p className={styles.error}>{errors.email?.message}</p>
+        <p className={`${styles.error} ${errors.email ? styles.visible : ""}`}>
+          {errors.email?.message}
+        </p>
         <div className={styles.passwordInput}>
           <input
             type={showPassword ? "text" : "password"}
@@ -71,7 +80,11 @@ function LogIn({ onClose }) {
             )}
           </span>
         </div>
-        <p className={styles.error}>{errors.password?.message}</p>
+        <p
+          className={`${styles.error} ${errors.password ? styles.visible : ""}`}
+        >
+          {errors.password?.message}
+        </p>
         <button className={styles.loginButton} type="submit">
           Log In
         </button>

@@ -1,7 +1,34 @@
 import styles from "./BookTrialLesson.module.css";
 import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import iziToast from "izitoast";
 
-function BookTrialLesson({ teacher }) {
+const schema = yup.object().shape({
+  name: yup.string().required("Name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  date: yup.date().required("Date is required"),
+  learningReason: yup.string().required("Please select a reason for learning"),
+});
+
+function BookTrialLesson({ teacher, onClose }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = () => {
+    iziToast.success({
+      title: "Success",
+      message: "Trial lesson booked successfully!",
+    });
+    onClose();
+  };
+
   return (
     <div className={styles.container}>
       <h1>Book trial lesson</h1>
@@ -22,52 +49,87 @@ function BookTrialLesson({ teacher }) {
         </div>
       </div>
       <h2>What is your main reason for learning English?</h2>
-      <div className={styles.radioGroup}>
-        <label>
-          <input
-            type="radio"
-            name="learningReason"
-            value="Career and business"
-          />
-          Career and business
-        </label>
-        <label>
-          <input type="radio" name="learningReason" value="Lesson for kids" />
-          Lesson for kids
-        </label>
-        <label>
-          <input type="radio" name="learningReason" value="Living abroad" />
-          Living abroad
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="learningReason"
-            value="Exams and coursework"
-          />
-          Exams and coursework
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="learningReason"
-            value="Culture, travel or hobby"
-          />
-          Culture, travel or hobby
-        </label>
-      </div>
-      <div className={styles.trialInputs}>
-        <input type="text" placeholder="Full Name" />
-        <input type="email" placeholder="Email" />
-        <input type="tel" placeholder="Phone number" />
-      </div>
-      <button className={styles.bookButton}>Book</button>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.trialInputs}>
+        <div className={styles.radioGroup}>
+          <label>
+            <input
+              type="radio"
+              name="learningReason"
+              value="Career and business"
+              {...register("learningReason")}
+            />
+            Career and business
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="learningReason"
+              value="Lesson for kids"
+              {...register("learningReason")}
+            />
+            Lesson for kids
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="learningReason"
+              value="Living abroad"
+              {...register("learningReason")}
+            />
+            Living abroad
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="learningReason"
+              value="Exams and coursework"
+              {...register("learningReason")}
+            />
+            Exams and coursework
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="learningReason"
+              value="Culture, travel or hobby"
+              {...register("learningReason")}
+            />
+            Culture, travel or hobby
+          </label>
+        </div>
+        <p
+          className={`${styles.error} ${
+            errors.learningReason ? styles.visible : ""
+          }`}
+        >
+          {errors.learningReason?.message}
+        </p>
+        <input type="text" placeholder="Name" {...register("name")} />
+        <p className={`${styles.error} ${errors.name ? styles.visible : ""}`}>
+          {errors.name?.message}
+        </p>
+
+        <input type="email" placeholder="Email" {...register("email")} />
+        <p className={`${styles.error} ${errors.email ? styles.visible : ""}`}>
+          {errors.email?.message}
+        </p>
+
+        <input type="date" {...register("date")} />
+        <p className={`${styles.error} ${errors.date ? styles.visible : ""}`}>
+          Valid date is required
+        </p>
+
+        <button type="submit" className={styles.bookButton}>
+          Book
+        </button>
+      </form>
     </div>
   );
 }
 
 BookTrialLesson.propTypes = {
   teacher: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default BookTrialLesson;

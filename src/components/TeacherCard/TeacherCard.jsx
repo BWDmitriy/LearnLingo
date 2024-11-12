@@ -5,6 +5,7 @@ import sprite from "../../assets/icons.svg";
 import { auth } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import PropTypes from "prop-types";
+import iziToast from "izitoast";
 
 function TeacherCard({ teacher }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -32,7 +33,10 @@ function TeacherCard({ teacher }) {
 
   const toggleFavorite = () => {
     if (!user) {
-      alert("This feature is available only for authorized users.");
+      iziToast.error({
+        title: "Error",
+        message: "This feature is available only for authorized users.",
+      });
       return;
     }
 
@@ -188,7 +192,7 @@ function TeacherCard({ teacher }) {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <BookTrialLesson teacher={teacher} />
+            <BookTrialLesson teacher={teacher} onClose={closeBookingModal} />
             <button className={styles.closeButton} onClick={closeBookingModal}>
               &times;
             </button>

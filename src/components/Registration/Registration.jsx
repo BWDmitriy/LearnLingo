@@ -7,6 +7,7 @@ import { auth } from "../../firebaseConfig";
 import styles from "./Registration.module.css";
 import sprite from "../../assets/icons.svg";
 import PropTypes from "prop-types";
+import iziToast from "izitoast";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -33,10 +34,16 @@ function Registration({ onClose }) {
   const onSubmit = async (data) => {
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
-      console.log("User registered successfully");
+      iziToast.success({
+        title: "Success",
+        message: "User registered successfully",
+      });
       onClose();
     } catch (error) {
-      console.error("Error registering:", error.message);
+      iziToast.error({
+        title: "Error",
+        message: `Error registering: ${error.message}`,
+      });
     }
   };
 
@@ -52,9 +59,13 @@ function Registration({ onClose }) {
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.inputDiv}>
         <input type="text" placeholder="Name" {...register("name")} />
-        <p className={styles.error}>{errors.name?.message}</p>
+        <p className={`${styles.error} ${errors.name ? styles.visible : ""}`}>
+          {errors.name?.message}
+        </p>
         <input type="email" placeholder="Email" {...register("email")} />
-        <p className={styles.error}>{errors.email?.message}</p>
+        <p className={`${styles.error} ${errors.email ? styles.visible : ""}`}>
+          {errors.email?.message}
+        </p>
         <div className={styles.passwordInput}>
           <input
             type={showPassword ? "text" : "password"}
@@ -73,7 +84,11 @@ function Registration({ onClose }) {
             )}
           </span>
         </div>
-        <p className={styles.error}>{errors.password?.message}</p>
+        <p
+          className={`${styles.error} ${errors.password ? styles.visible : ""}`}
+        >
+          {errors.password?.message}
+        </p>
         <button className={styles.regButton} type="submit">
           Sign Up
         </button>

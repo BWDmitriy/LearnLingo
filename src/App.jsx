@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import { Suspense, lazy, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import "izitoast/dist/css/iziToast.min.css";
 
 const Home = lazy(() => import("./components/Home/Home"));
 const Teachers = lazy(() => import("./components/Teachers/Teachers"));
