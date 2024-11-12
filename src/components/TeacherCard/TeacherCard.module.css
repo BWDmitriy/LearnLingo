@@ -267,10 +267,7 @@ border: none;
 
 
 @media (max-width: 768px) {
-  .modalBackdrop {
-        width: auto;
-        height: auto;
-      }
+  
     
       .modalContent {
         padding: 0;
@@ -278,4 +275,13 @@ border: none;
       .modalContent * {
         max-width: 90%;
       }
+}
+@media (max-width: 475px) {
+  .modalBackdrop {
+      width: auto;
+      height: auto;
+    }
+    .modalContent * {
+      max-width: 80%;
+    }
 }
