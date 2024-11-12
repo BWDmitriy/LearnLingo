@@ -80,8 +80,6 @@
 .footer {
   border: 1.5px dashed #f4c550;
   border-radius: 30px;
-  width: 1312px;
-  height: 116px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -138,4 +136,46 @@
     top: 70%;
     left: 20%;
     z-index: 1;
+}
+
+@media (max-width: 1250px) {
+  main {
+    flex-direction: column;
+  }
+  
+}
+
+@media (min-width: 769px) {
+  footer {
+  width: 90%;
+  height: 90%;
+  padding:38px;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .container {
+    text-align: center;
+  }
+  .descriptionDiv {
+    width:100%;
+    height:100%;
+  }
+  .descriptionDiv p, .descriptionDiv h1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+  .descriptionDiv a {
+    margin-left: auto;
+    margin-right: auto;
+  } 
+  footer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: fit-content;
+    height: fit-content;
+  }
+
 }

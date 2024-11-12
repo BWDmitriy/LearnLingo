@@ -227,3 +227,14 @@ border: none;
   flex-direction: column;
   gap:32px;
 }
+
+@media (max-width: 768px) {
+  .teacherDiv {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .teacherPic {
+    height:100%;
+    width:100%
+  }
+}

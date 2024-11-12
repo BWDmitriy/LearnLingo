@@ -123,3 +123,10 @@ nav ul li a, nav ul li button {
 .loginButton {
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
