@@ -205,7 +205,7 @@ function TeacherCard({ teacher, onRemoveFavorite }) {
 }
 
 TeacherCard.propTypes = {
-  teacher: PropTypes.func.isRequired,
+  teacher: PropTypes.any.isRequired,
   onRemoveFavorite: PropTypes.func.isRequired,
 };
 

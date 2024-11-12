@@ -128,7 +128,7 @@ function BookTrialLesson({ teacher, onClose }) {
 }
 
 BookTrialLesson.propTypes = {
-  teacher: PropTypes.func.isRequired,
+  teacher: PropTypes.any.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
