@@ -5,12 +5,14 @@ import Registration from "../Registration/Registration";
 import LogIn from "../LogIn/LogIn";
 import { auth } from "../../firebaseConfig.js";
 import sprite from "../../assets/icons.svg";
+import { useLocation } from "react-router-dom";
 
 function Header() {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
   const [isLogInOpen, setIsLogInOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
+  const location = useLocation();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -48,14 +50,31 @@ function Header() {
         <p>LearnLingo</p>
       </div>
       <div className={styles.headerLinks}>
-        <a href="/">Home</a>
-        <a href="/teachers">Teachers</a>
+        <a
+          href="/"
+          className={location.pathname === "/" ? styles.activeLink : ""}
+        >
+          Home
+        </a>
+        <a
+          href="/teachers"
+          className={location.pathname === "/teachers" ? styles.activeLink : ""}
+        >
+          Teachers
+        </a>
       </div>
       <div className={styles.headerAuth}>
         {user ? (
           <>
             <div className={styles.headerLinks}>
-              <a href="/favorites">Favorites</a>
+              <a
+                href="/favorites"
+                className={
+                  location.pathname === "/favorites" ? styles.activeLink : ""
+                }
+              >
+                Favorites
+              </a>
             </div>
             <a className={styles.loginButton} onClick={handleLogout}>
               <svg width="20" height="20">

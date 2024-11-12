@@ -45,6 +45,7 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
 
 img {
@@ -60,6 +61,11 @@ button {
 
 button:hover {
   box-shadow: none;
+}
+
+button:hover,
+a:hover {
+  opacity: 0.8; 
 }
 
 input {

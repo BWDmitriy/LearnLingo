@@ -29,10 +29,16 @@
   color: #121417;
   margin-right: 1rem;
   text-decoration: none;
+  cursor: pointer;
+}
+.headerLinks a.activeLink {
+  font-weight: bold;
+  color: #f4c550; 
 }
 .headerAuth {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .headerAuth a {
   font-family: var(--font-family);
@@ -43,6 +49,11 @@
   margin-right: 1rem;
   text-decoration: none;
   display:flex;
+  cursor: pointer;
+}
+.headerAuth a:hover,
+.headerAuth button:hover {
+  opacity: 0.8; 
 }
 
 .registrationButton {
