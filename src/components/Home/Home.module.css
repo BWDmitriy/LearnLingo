@@ -154,8 +154,17 @@
 }
  
 @media (max-width: 768px) {
+  /* * {
+    overflow-x: hidden;
+  } */
+  .main {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+  }
   .container {
     text-align: center;
+    padding: 5px;
   }
   .descriptionDiv {
     width:100%;

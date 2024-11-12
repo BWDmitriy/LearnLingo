@@ -237,4 +237,45 @@ border: none;
     height:100%;
     width:100%
   }
+  .teacherStats {
+    flex-direction: column;
+  }
+    .levels {
+      flex-direction: column;
+    }
+  .divider {
+    display: none;
+  }
+
+    /* .modalBackdrop {
+      width: auto;
+      height: auto;
+    }
+  
+    .modalContent {
+      padding: 0;
+    } */
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+  .teacherDescription {
+    width: 70%;
+  }
+    .levels div {
+      width: calc((100% - 16px)/3);
+    }
+}
+
+
+@media (max-width: 768px) {
+  .modalBackdrop {
+        width: auto;
+        height: auto;
+      }
+    
+      .modalContent {
+        padding: 0;
+      }
+      .modalContent * {
+        max-width: 90%;
+      }
 }

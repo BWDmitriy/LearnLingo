@@ -58,3 +58,10 @@ option:first-of-type {
     color: #8a8a89;
 }
 
+@media (max-width: 768px) {
+
+  .filterDiv {
+    flex-direction: column;
+  }
+
+}
