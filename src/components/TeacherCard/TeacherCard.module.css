@@ -246,15 +246,6 @@ border: none;
   .divider {
     display: none;
   }
-
-    /* .modalBackdrop {
-      width: auto;
-      height: auto;
-    }
-  
-    .modalContent {
-      padding: 0;
-    } */
 }
 @media (min-width: 769px) and (max-width: 1200px) {
   .teacherDescription {
@@ -262,6 +253,10 @@ border: none;
   }
     .levels div {
       width: calc((100% - 16px)/3);
+      text-align: center;
+    }
+    .levels {
+      flex-direction: column;
     }
 }
 
